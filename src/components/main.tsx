@@ -30,6 +30,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { ContactForm } from "./contact form";
+import { JSX, SVGProps } from "react";
 
 export function Main() {
   return (
@@ -363,8 +364,8 @@ export function Main() {
     </div>
   );
 }
-
-function BriefcaseIcon(props) {
+// 
+function BriefcaseIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -384,7 +385,7 @@ function BriefcaseIcon(props) {
   );
 }
 
-function MenuIcon(props) {
+function MenuIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
