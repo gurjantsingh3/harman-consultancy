@@ -31,39 +31,48 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { ContactForm } from "./contact form";
 import { JSX, SVGProps } from "react";
+import Image from "next/image";
 
 export function Main() {
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="bg-gray-900 px-4 py-3 sm:px-6 lg:px-8">
+      <header className="bg-gray-300   sm:px-1 lg:px-8">
         <div className="container mx-auto flex items-center justify-between">
           <Link className="flex items-center" href="#">
-            <BriefcaseIcon className="h-6 w-6 text-white" />
-            <span className="ml-2 text-lg font-bold text-white">
-              Harman Consultancy
+            {/* <BriefcaseIcon className="h-6 w-6 text-white" />
+             */}
+            <Image
+              alt="logo"
+              src="/logo.png"
+              width={100}
+              height={100}
+              className="object-contain"
+            />
+            <span className="ml-2 text-lg font-bold text-black">
+              Hire Harmony Solutions{" "}
             </span>
           </Link>
           <nav className="hidden space-x-4 md:flex">
             <Link
-              className="text-gray-300 hover:text-white focus:text-white"
+              className="text-black text-lg font-bold hover:text-black focus:text-white"
               href="#"
             >
               Home
             </Link>
             <Link
-              className="text-gray-300 hover:text-white focus:text-white"
+              className="text-black text-lg font-bold hover:text-black focus:text-white"
               href="#"
             >
               Job Board
             </Link>
             <Link
-              className="text-gray-300 hover:text-white focus:text-white"
+              className="text-black text-lg font-bold hover:text-black focus:text-white"
               href="#"
             >
               Resume Upload
             </Link>
             <Link
-              className="text-gray-300 hover:text-white focus:text-white"
+              className="text-black text-lg font-bold hover:text-black focus:text-white"
               href="#"
             >
               Contact
@@ -83,15 +92,15 @@ export function Main() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               <div>
-                <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl">
-                  Welcome to Harman Consultancy
+                <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl text-center">
+                  Welcome to Hire Harmony Solutions
                 </h1>
-                <p className="mt-4 text-lg text-gray-700">
-                  We are a leading consulting firm that specializes in helping
-                  businesses achieve their goals. Our team of experts is
-                  dedicated to providing personalized solutions to our clients.
+                <p className="mt-8 text-lg text-gray-700 text-center">
+                Welcome to Hire Harmony Solutions, your trusted partner in business growth and success. 
+    With a wealth of experience and a commitment to excellence, we specialize in providing tailored consulting services to businesses of all sizes. 
+    Our dedicated team of experts is here to guide you through every step of your journey, helping you achieve your goals and unlock your full potential.
                 </p>
-                <div className="mt-8">
+                <div className="mt-12 flex justify-center">
                   <Link
                     className="inline-flex items-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
                     href="#"
@@ -102,7 +111,7 @@ export function Main() {
               </div>
               <div>
                 <img
-                  alt="Harman Consultancy"
+                  alt="Harman Solutions"
                   className="mx-auto rounded-lg"
                   height="400"
                   src="/hr.jpeg"
@@ -127,15 +136,18 @@ export function Main() {
             <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               <Card>
                 <CardHeader>
-                  <CardTitle>Senior Software Engineer</CardTitle>
-                  <CardDescription>
-                    We are looking for an experienced software engineer to join
-                    our team.
-                  </CardDescription>
+                  <CardTitle className="text-xl">MARKETING EXECUTIVE</CardTitle>
+                  <div>
+                    <ul className="text-xs">
+                      <li>Minimum 6 months of  relevant work experience</li>
+                      <li>Salary: 15000 to 25000</li>
+                      <li>Location: Rajpura</li>
+                    </ul>
+                  </div>
                 </CardHeader>
                 <CardContent>
                   <div className="flex items-center justify-between">
-                    <div className="text-sm font-medium text-gray-900">
+                    <div className="text-sm font-medium text-gray-400">
                       Full-time
                     </div>
                     <Link
@@ -149,15 +161,19 @@ export function Main() {
               </Card>
               <Card>
                 <CardHeader>
-                  <CardTitle>Marketing Manager</CardTitle>
-                  <CardDescription>
-                    We are looking for a talented marketing manager to join our
-                    team.
-                  </CardDescription>
+                  <CardTitle className="text-xl">SEO EXECUTIVE</CardTitle>
+                  <div>
+                  <ul className="text-xs">
+                      <li>Minimum 6 months of  relevant work experience</li>
+                      <li>Salary: 15000 to 25000</li>
+                      <li>Location: Rajpura</li>
+
+                    </ul>
+                  </div>
                 </CardHeader>
                 <CardContent>
                   <div className="flex items-center justify-between">
-                    <div className="text-sm font-medium text-gray-900">
+                    <div className="text-sm font-medium text-gray-400">
                       Full-time
                     </div>
                     <Link
@@ -171,79 +187,19 @@ export function Main() {
               </Card>
               <Card>
                 <CardHeader>
-                  <CardTitle>US Call Center Representative</CardTitle>
-                  <CardDescription>
-                    We are looking for a US call center representative to join
-                    our team.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center justify-between">
-                    <div className="text-sm font-medium text-gray-900">
-                      Full-time
-                    </div>
-                    <Link
-                      className="inline-flex items-center rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
-                      href="#"
-                    >
-                      Apply
-                    </Link>
+                  <CardTitle className="text-xl">IELTS TRAINER</CardTitle>
+                  <div>
+                  <ul className="text-xs">
+                      <li>Minimum 6 months of relevant work experience</li>
+                      <li>Salary: 15000 to 25000</li>
+                      <li>Location: Rajpura</li>
+
+                    </ul>
                   </div>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle>Web Designer</CardTitle>
-                  <CardDescription>
-                    We are looking for a talented web designer to join our team.
-                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="flex items-center justify-between">
-                    <div className="text-sm font-medium text-gray-900">
-                      Full-time
-                    </div>
-                    <Link
-                      className="inline-flex items-center rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
-                      href="#"
-                    >
-                      Apply
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle>Real Estate Agent</CardTitle>
-                  <CardDescription>
-                    We are looking for a real estate agent to join our team.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center justify-between">
-                    <div className="text-sm font-medium text-gray-900">
-                      Full-time
-                    </div>
-                    <Link
-                      className="inline-flex items-center rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
-                      href="#"
-                    >
-                      Apply
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle>Customer Support</CardTitle>
-                  <CardDescription>
-                    We are looking for a customer support specialist to join our
-                    team.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center justify-between">
-                    <div className="text-sm font-medium text-gray-900">
+                    <div className="text-sm font-medium text-gray-400">
                       Full-time
                     </div>
                     <Link
@@ -331,29 +287,48 @@ export function Main() {
         </section> */}
       </main>
       <ContactForm />
-      <footer className="bg-gray-900 px-4 py-6 sm:px-6 lg:px-8">
+      <footer className="bg-gray-400  sm:px-6 lg:px-8">
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center">
-            <BriefcaseIcon className="h-6 w-6 text-white" />
-            <span className="ml-2 text-lg font-bold text-white">
-              Harman Consultancy
-            </span>
+            {/* <BriefcaseIcon className="h-6 w-6 text-white" /> */}
+            <Image
+              alt="logo"
+              src="/logo.png"
+              width={100}
+              height={100}
+              className="object-contain"
+            />
+       <span className="ml-2 text-lg font-bold text-black">
+  Hire Harmony Solutions{" "}
+  <ul className="text-xs font-normal font-sans">
+    <li>Director: Ramanjeet Singh, CEO: Mehak</li>
+    <li>
+      <a href="mailto:hireharmonysolutions@gmail.com" className="text-black hover:underline">
+        Email: hireharmonysolutions@gmail.com
+      </a>
+    </li>
+  </ul>
+</span>
+          </div>
+          <div className="hidden md:flex space-x-4 items-center text-black text-sm">
+           <p>© 2024 Hire Harmony. All rights reserved.</p>
+           {/* <p></p> */}
           </div>
           <div className="hidden space-x-4 md:flex">
             <Link
-              className="text-gray-300 hover:text-white focus:text-white"
+              className="text-black text-lg font-bold hover:text-black focus:text-white"
               href="#"
             >
               Privacy Policy
             </Link>
             <Link
-              className="text-gray-300 hover:text-white focus:text-white"
+              className="text-black text-lg font-bold hover:text-black focus:text-white"
               href="#"
             >
               Terms of Service
             </Link>
             <Link
-              className="text-gray-300 hover:text-white focus:text-white"
+              className="text-black text-lg font-bold hover:text-black focus:text-white"
               href="#"
             >
               Contact Us
@@ -364,8 +339,10 @@ export function Main() {
     </div>
   );
 }
-// 
-function BriefcaseIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
+//
+function BriefcaseIcon(
+  props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
+) {
   return (
     <svg
       {...props}
