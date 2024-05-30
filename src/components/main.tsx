@@ -304,7 +304,7 @@ export function Main() {
     <li>Director: Ramanjeet Singh, CEO: Mehak</li>
     <li>
       <a href="mailto:hireharmonysolutions@gmail.com" className="text-black hover:underline">
-        Email: hireharmonysolutions@gmail.com
+        Email: hireharmonysolution@gmail.com
       </a>
     </li>
   </ul>
