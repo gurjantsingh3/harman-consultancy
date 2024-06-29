@@ -18,7 +18,7 @@ export default async function handler(req, res) {
 
       // Create email body
       const mailOptions = {
-        from: 'your_email@example.com', // sender address
+        from: 'tr.gurjant@gmail.com', // sender address
         to: 'hireharmonysolution@gmail.com', // list of receivers
         subject: 'New Job Consultancy Form Submission',
         html: `
