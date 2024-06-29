@@ -17,7 +17,7 @@ To read more about using these font, please visit the Next.js documentation:
 - App Directory: https://nextjs.org/docs/app/building-your-application/optimizing/fonts
 - Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
 **/
-'use client'
+"use client";
 
 import Link from "next/link";
 import {
@@ -34,11 +34,18 @@ import { Button } from "@/components/ui/button";
 import { ContactForm } from "./contact form";
 import { JSX, SVGProps } from "react";
 import Image from "next/image";
+import { Facebook, FacebookIcon, Instagram } from "lucide-react";
 
 export function Main() {
+  function scrollTo(id: string) {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  }
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="bg-gray-300   sm:px-1 lg:px-8">
+      <header className="bg-gray-300 sticky top-0  z-20  sm:px-1 lg:px-8">
         <div className="container mx-auto flex items-center justify-between">
           <Link className="flex items-center" href="#">
             {/* <BriefcaseIcon className="h-6 w-6 text-white" />
@@ -55,27 +62,26 @@ export function Main() {
             </span>
           </Link>
           <nav className="hidden space-x-4 md:flex">
-            <Link
+
+
+            <Link 
               className="text-black text-lg font-bold hover:text-black focus:text-white"
               href="#"
-            >
-              Home
-            </Link>
-            <Link
-              className="text-black text-lg font-bold hover:text-black focus:text-white"
-              href="#"
+              onClick={() => scrollTo("job-board")}
             >
               Job Board
             </Link>
             <Link
               className="text-black text-lg font-bold hover:text-black focus:text-white"
               href="#"
+              onClick={() => scrollTo("contact")}
             >
               Resume Upload
             </Link>
             <Link
               className="text-black text-lg font-bold hover:text-black focus:text-white"
               href="#"
+              onClick={() => scrollTo("contact")}
             >
               Contact
             </Link>
@@ -98,9 +104,13 @@ export function Main() {
                   Welcome to Hire Harmony Solutions
                 </h1>
                 <p className="mt-8 text-lg text-gray-700 text-center">
-                Welcome to Hire Harmony Solutions, your trusted partner in business growth and success. 
-    With a wealth of experience and a commitment to excellence, we specialize in providing tailored consulting services to businesses of all sizes. 
-    Our dedicated team of experts is here to guide you through every step of your journey, helping you achieve your goals and unlock your full potential.
+                  Welcome to Hire Harmony Solutions, your trusted partner in
+                  business growth and success. With a wealth of experience and a
+                  commitment to excellence, we specialize in providing tailored
+                  consulting services to businesses of all sizes. Our dedicated
+                  team of experts is here to guide you through every step of
+                  your journey, helping you achieve your goals and unlock your
+                  full potential.
                 </p>
                 <div className="mt-12 flex justify-center">
                   <Link
@@ -127,7 +137,7 @@ export function Main() {
             </div>
           </div>
         </section>
-        <section className="bg-white py-12 sm:py-16 lg:py-20">
+        <section className="bg-white py-12 sm:py-16 lg:py-20" id="job-board">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl lg:text-4xl">
               Job Board
@@ -141,7 +151,7 @@ export function Main() {
                   <CardTitle className="text-xl">MARKETING EXECUTIVE</CardTitle>
                   <div>
                     <ul className="text-xs">
-                      <li>Minimum 6 months of  relevant work experience</li>
+                      <li>Minimum 6 months of relevant work experience</li>
                       <li>Salary: 15000 to 25000</li>
                       <li>Location: Rajpura</li>
                     </ul>
@@ -165,11 +175,10 @@ export function Main() {
                 <CardHeader>
                   <CardTitle className="text-xl">SEO EXECUTIVE</CardTitle>
                   <div>
-                  <ul className="text-xs">
-                      <li>Minimum 6 months of  relevant work experience</li>
+                    <ul className="text-xs">
+                      <li>Minimum 6 months of relevant work experience</li>
                       <li>Salary: 15000 to 25000</li>
                       <li>Location: Rajpura</li>
-
                     </ul>
                   </div>
                 </CardHeader>
@@ -191,11 +200,10 @@ export function Main() {
                 <CardHeader>
                   <CardTitle className="text-xl">IELTS TRAINER</CardTitle>
                   <div>
-                  <ul className="text-xs">
+                    <ul className="text-xs">
                       <li>Minimum 6 months of relevant work experience</li>
                       <li>Salary: 15000 to 25000</li>
                       <li>Location: Rajpura</li>
-
                     </ul>
                   </div>
                 </CardHeader>
@@ -216,77 +224,7 @@ export function Main() {
             </div>
           </div>
         </section>
-        {/* <section className="bg-gray-100 py-12 sm:py-16 lg:py-20">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl lg:text-4xl">
-              Resume Upload
-            </h2>
-            <p className="mt-4 text-lg text-gray-700">
-              Submit your resume and job requirements, and our team will review
-              your application within 24 hours.
-            </p>
-            <div className="mt-8">
-              <form>
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                  <div>
-                    <Label htmlFor="name">Name</Label>
-                    <Input id="name" required type="text" />
-                  </div>
-                  <div>
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" required type="email" />
-                  </div>
-                </div>
-                <div className="mt-6">
-                  <Label htmlFor="resume">Resume</Label>
-                  <Input id="resume" required type="file" />
-                </div>
-                <div className="mt-6">
-                  <Label htmlFor="job-requirements">Job Requirements</Label>
-                  <Textarea id="job-requirements" required rows={4} />
-                </div>
-                <div className="mt-6">
-                  <Button className="w-full" type="submit">
-                    Submit
-                  </Button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </section>
-        <section className="bg-white py-12 sm:py-16 lg:py-20">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl lg:text-4xl">
-              Contact Us
-            </h2>
-            <p className="mt-4 text-lg text-gray-700">
-              Get in touch with us for more information about our services.
-            </p>
-            <div className="mt-8">
-              <form>
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                  <div>
-                    <Label htmlFor="name">Name</Label>
-                    <Input id="name" required type="text" />
-                  </div>
-                  <div>
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" required type="email" />
-                  </div>
-                </div>
-                <div className="mt-6">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea id="message" required rows={4} />
-                </div>
-                <div className="mt-6">
-                  <Button className="w-full" type="submit">
-                    Submit
-                  </Button>
-                </div>
-              </form>
-            </div>
-          </div>dd
-        </section> */}
+       
       </main>
       <ContactForm />
       <footer className="bg-gray-400  sm:px-6 lg:px-8">
@@ -300,21 +238,39 @@ export function Main() {
               height={100}
               className="object-contain"
             />
-       <span className="ml-2 text-lg font-bold text-black">
-  Hire Harmony Solutions{" "}
-  <ul className="text-xs font-normal font-sans">
-    <li>Director: Ramanjeet Singh, CEO: Mehak</li>
-    <li>
-      <a href="mailto:hireharmonysolutions@gmail.com" className="text-black hover:underline">
-        Email: hireharmonysolution@gmail.com
-      </a>
-    </li>
-  </ul>
-</span>
+            <span className="ml-2 text-lg font-bold text-black">
+              Hire Harmony Solutions{" "}
+              <ul className="text-xs font-normal font-sans">
+                <li>Director: Ramanjeet Singh, CEO: Mehak</li>
+                <li>
+                  <a
+                    href="mailto:hireharmonysolutions@gmail.com"
+                    className="text-black hover:underline"
+                  >
+                    Email: hireharmonysolution@gmail.com
+                  </a>
+                </li>
+              </ul>
+            </span>
           </div>
-          <div className="hidden md:flex space-x-4 items-center text-black text-sm">
-           <p>© 2024 Hire Harmony. All rights reserved.</p>
-           {/* <p></p> */}
+          <div className="hidden md:flex flex-col gap-2 space-x-4 items-center text-black text-sm">
+            <p>© 2024 Hire Harmony. All rights reserved.</p>
+            <div className="flex gap-2">
+              <a
+                href=" https://www.instagram.com/hireharmonysolutions/"
+                target="_blank"
+              >
+                <Instagram className="h-6 w-6 text-black" />
+              </a>
+              <a
+                href=" https://www.facebook.com/profile.php?id=61557775387526&mibextid=ZbWKwL"
+                target="_blank"
+              >
+                <FacebookIcon className="h-6 w-6 text-black" />
+              </a>
+            </div>
+
+            {/* <p></p> */}
           </div>
           <div className="hidden space-x-4 md:flex">
             <Link

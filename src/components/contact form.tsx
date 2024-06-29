@@ -10,11 +10,12 @@ import {
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-
 import { useState } from "react";
+import { sendEmail } from "@/app/utils/sendEmail";
+import { toast } from "./ui/use-toast";
 
 export function ContactForm() {
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -31,50 +32,97 @@ export function ContactForm() {
 
   const handleFileChange = (e: any) => {
     const file = e.target.files[0];
- 
+    console.log(file, "file");
+
     setFormData({ ...formData, resume: file });
     // store in file folder with file name as resume
   };
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-      // Check if any field is empty
-  const isEmptyField = Object.values(formData).some((value) => value === "");
+  // const handleSubmit = async (e: any) => {
+  //   e.preventDefault();
+  //     // Check if any field is empty
+  // const isEmptyField = Object.values(formData).some((value) => value === "");
 
-  if (isEmptyField) {
-    alert("Please fill in all the fields.");
-    return;
-  }
-  if (!formData.resume) {
-    alert("Please add resume");
-    return;
-  }
+  // if (isEmptyField) {
+  //   alert("Please fill in all the fields.");
+  //   return;
+  // }
+  // if (!formData.resume) {
+  //   alert("Please add resume");
+  //   return;
+  // }
+
+  //   try {
+  //     console.log(formData);
+  //     const response = await fetch("/api/Sendmail", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(formData),
+  //     });
+
+  //     if (response.ok) {
+  //       setSubmitted(true);
+  //       setTimeout(() => {
+  //         window.location.reload(); // Refresh the page after 2 seconds
+  //       }, 2000);
+  //     } else {
+  //       console.error("Failed to send email");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error sending email:", error);
+  //   }
+  //
+  const handleSubmit = async () => {
+    const postData = new FormData();
+    postData.append("fullName", formData.fullName);
+    postData.append("email", formData.email);
+    postData.append("phoneNumber", formData.phoneNumber);
+    postData.append("jobRequirements", formData.jobRequirements);
+    postData.append("resume", formData.resume!);
+
+    console.log(postData.getAll("fullName"));
+    const isEmptyField = Object.values(formData).some(
+      (value) => value === "" || value == null
+    );
+    if (isEmptyField) {
+      toast({
+        description: "Please fill in all the fields.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     try {
-      console.log(formData);
-      const response = await fetch("/api/Sendmail", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setSubmitted(true);
-        setTimeout(() => {
-          window.location.reload(); // Refresh the page after 2 seconds
-        }, 2000);
+      setLoading(true);
+      const res = await sendEmail(postData);
+      if ((res.message = "Email sent")) {
+        toast({
+          description: "Form Submitted Successfully",
+          variant: "default",
+        });
+        setFormData({
+          fullName: "",
+          email: "",
+          phoneNumber: "",
+          jobRequirements: "",
+          resume: null,
+        });
+        setLoading(false);
       } else {
-        console.error("Failed to send email");
+        alert("Email Not sent");
+        setLoading(false);
       }
     } catch (error) {
-      console.error("Error sending email:", error);
+      console.log(error);
+      setLoading(false);
     }
   };
   return (
     <div
-      className="relative w-full h-screen bg-cover bg-center"
+      id="contact"
+      className="relative w-full h-screen bg-cover bg-center z-10"
       style={{
         backgroundImage: "url(/bg.webp)",
       }}
@@ -143,16 +191,16 @@ export function ContactForm() {
             </div>
           </CardContent>
           <CardFooter>
-            <Button onClick={handleSubmit}>Submit</Button>
+            <Button onClick={handleSubmit} disabled={loading}>
+              {loading ? "Submitting..." : "Submit"}
+            </Button>
             {submitted && (
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="bg-green-500 text-white rounded-full p-4">
                   {/* Add checkmark or any success icon here */}✓
                   <span className="ml-2">Form submitted successfully!</span>
-                  
                 </div>
               </div>
-              
             )}{" "}
           </CardFooter>
         </Card>
